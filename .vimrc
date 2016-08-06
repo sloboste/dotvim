@@ -62,6 +62,7 @@ nnoremap <F8> :TagbarToggle<CR>
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 "NERDTree file explorer
+nnoremap <F7> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree  "NOTE: this is VERY SLOW when using sshfs
 autocmd VimEnter * wincmd p  "Focus on file not NERDTree on startup
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
