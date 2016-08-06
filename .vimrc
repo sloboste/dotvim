@@ -14,10 +14,9 @@ filetype plugin indent on
 let fld_blacklist = ['python', 'gitcommit']
 autocmd BufRead * if (index(fld_blacklist, &ft) < 0) | setlocal foldmethod=syntax
 
-"Pretend buffers are like tabs in other programs
+"Remap bn -> gt, bp -> gT for quick next/prev buffer switching since tabs are
+"used less. Note: buffer numbers continously change.
 set hidden
-"FIXME
-"nnoremap <silent> gt : <c-U>exec v:count ? "buffer".v:count<CR> ? "bn".<CR>
 nnoremap <silent> gt :bn<CR>
 nnoremap <silent> gT :bp<CR>
 
