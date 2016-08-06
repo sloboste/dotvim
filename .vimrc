@@ -69,7 +69,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "GitGutter
 let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 1
+let g:gitgutter_eager = 0
+"The above settings don't seem to work when they are set to 1 so use autocmd
+autocmd BufWritePost * :GitGutter
 
 "YouCompleteMe options
 let g:ycm_register_as_syntastic_checker = 0
