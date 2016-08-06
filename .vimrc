@@ -16,3 +16,8 @@ set hidden
 "nnoremap <silent> gt : <c-U>exec v:count ? "buffer".v:count<CR> ? "bn".<CR>
 nnoremap <silent> gt :bn<CR>
 nnoremap <silent> gT :bp<CR>
+
+"Solarized color scheme
+set background=dark
+set t_Co=16
+colorscheme solarized
