@@ -31,6 +31,23 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1                                               
 let g:syntastic_check_on_wq = 0
 
+"Syntastic Python
+let g:syntastic_python_pylint_exec = 'pylint'
+let g:syntastic_python_pylint_args = ['--rc-file=.pylintrc']
+let g:syntastic_python_checkers = ['pylint']
+
+"Syntastic c++
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-Wall -Wextra -pedantic-errors'
+let g:syntastic_cpp_compiler_options += '-std=c++11 -stdlib=c++'
+
+"Syntastic TCL
+let g:syntastic_tcl_nagelfar_exec = 'nagelfar.tcl'
+let g:syntastic_tcl_checkers = ['nagelfar']
+
+"Syntastic Verilog / System Verilog
+"TODO use verilator
+
 "Airline
 set laststatus=2  "Always show status line
 let g:airline#extensions#tabline#enabled = 1
