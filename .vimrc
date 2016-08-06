@@ -49,9 +49,6 @@ let g:syntastic_cpp_compiler_options += '-std=c++11 -stdlib=c++'
 let g:syntastic_tcl_nagelfar_exec = 'nagelfar.tcl'
 let g:syntastic_tcl_checkers = ['nagelfar']
 
-"Syntastic Verilog / System Verilog
-"TODO use verilator
-
 "Airline
 set laststatus=2  "Always show status line
 let g:airline#extensions#tabline#enabled = 1
