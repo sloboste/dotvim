@@ -10,6 +10,10 @@ set tabstop=4
 syntax on
 filetype plugin indent on
 
+"Use syntax folding for all non-blacklisted filetypes
+let fld_blacklist = ['python', 'gitcommit']
+autocmd BufRead * if (index(fld_blacklist, &ft) < 0) | setlocal foldmethod=syntax
+
 "Pretend buffers are like tabs in other programs
 set hidden
 "FIXME
