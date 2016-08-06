@@ -35,3 +35,6 @@ let g:syntastic_check_on_wq = 0
 set laststatus=2  "Always show status line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+"IndentLine color
+let g:indentLine_color_term = 0
