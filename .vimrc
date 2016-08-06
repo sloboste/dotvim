@@ -74,7 +74,6 @@ let g:gitgutter_eager = 0
 autocmd BufWritePost * :GitGutter
 
 "YouCompleteMe options
-let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_add_preview_to_context = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
