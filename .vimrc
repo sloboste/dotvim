@@ -38,3 +38,7 @@ let g:airline_powerline_fonts = 1
 
 "IndentLine color
 let g:indentLine_color_term = 0
+
+"Tagbar
+nnoremap <F8> :TagbarToggle<CR>
+autocmd VimEnter * nested :call tagbar#autoopen(1)
