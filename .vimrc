@@ -51,3 +51,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "GitGutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
+
+"YouCompleteMe options
+let g:ycm_register_as_syntastic_checker = 0
+let g:ycm_add_preview_to_context = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_python_binary_path = 'python'
