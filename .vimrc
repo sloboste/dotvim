@@ -47,3 +47,7 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd vimenter * NERDTree  "NOTE: this is VERY SLOW when using sshfs
 autocmd VimEnter * wincmd p  "Focus on file not NERDTree on startup
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"GitGutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 1
