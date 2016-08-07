@@ -83,3 +83,8 @@ let g:ycm_python_binary_path = 'python'
 let g:SimpylFold_fold_import = 0
 let g:SimpylFold_fold_docstring = 0
 let g:SimpylFold_docstring_preview = 1
+
+"ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
