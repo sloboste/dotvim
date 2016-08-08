@@ -1,2 +1,2 @@
-* TODO: install script
+* finish install script auto detection of profile name
 * better ultisnip snippets for python and c/c++

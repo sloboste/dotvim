@@ -26,6 +26,7 @@ nnoremap <silent> gT :bp<CR>
 
 "Solarized color scheme
 set background=dark
+"let g:solarized_termcolors=16  "NOTE: if colors weird, try uncommenting this
 set t_Co=16
 colorscheme solarized
 
