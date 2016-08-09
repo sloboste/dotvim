@@ -17,12 +17,14 @@ autocmd FileType c,cpp setlocal foldmethod=syntax
 "let fld_blacklist = ['gitcommit'] " , 'python']
 "autocmd BufNewFile,BufReadPost * if (index(fld_blacklist, &ft) < 0) | setlocal foldmethod=syntax
 
-"FIXME this is stupid, find a good buffer managment plugin
 "Remap gt -> :bn, gT -> :bp for quick next/prev buffer switching since tabs are
 "used less. Note: buffer numbers continously change.
 set hidden
 nnoremap <silent> gt :bn<CR>
 nnoremap <silent> gT :bp<CR>
+"Disable buffer switching key sequences in NERDTree and Tagbar windows
+autocmd FileType nerdtree,tagbar nnoremap <buffer> gt <nop>
+autocmd FileType nerdtree,tagbar nnoremap <buffer> gT <nop>
 
 "Solarized color scheme
 set background=dark
