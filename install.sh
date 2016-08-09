@@ -142,6 +142,11 @@ function install_powerline_fonts()
 # Main program
 ################################################################################
 
+# Cache user credentials so all other sudos will work without password, IF the
+# sudo timeout is set to a reasonable time
+echo "Please enter your password for sudo"
+sudo -v
+
 echo "Making temp directory ${g_tmp_dir}"
 mkdir -p "${g_tmp_dir}"
 
