@@ -155,6 +155,10 @@ install_verilator
 install_gnome_solarized
 install_powerline_fonts
 
+echo "Creating links for .vimrc and .ycm_extra_conf.py in ${HOME}"
+ln --symbolic "${g_dotvim_dir}/.vimrc" "${HOME}/.virmc"
+ln --symbolic "${g_dotvim_dir}/.ycm_extra_conf.py" "${HOME}/.ycm_extra_conf.py"
+
 echo "Cleaning up ${g_tmp_dir}"
 rm -rf "${g_tmp_dir}"
 
