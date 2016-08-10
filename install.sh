@@ -137,6 +137,24 @@ function install_powerline_fonts()
     cd "${old_cwd}"
 }
 
+function install_plugins()
+{
+    local old_cwd=$(pwd)
+
+    echo "Initializing plugin submodules"
+    cd "${g_dotvim_dir}"
+    git submodule update --init --recursive
+
+    echo "Installing YouCompleteMe"
+    cd bundle/YouCompleteMe
+    python install.py --clang-completer
+
+    echo "Creating links for .vimrc and .ycm_extra_conf.py in ${HOME}"
+    ln --symbolic "${g_dotvim_dir}/.vimrc" "${HOME}/.virmc"
+    ln --symbolic "${g_dotvim_dir}/.ycm_extra_conf.py" "${HOME}/.ycm_extra_conf.py"
+
+    cd "${old_cwd}"
+}
 
 ################################################################################
 # Main program
@@ -154,10 +172,7 @@ install_nagelfar
 install_verilator
 install_gnome_solarized
 install_powerline_fonts
-
-echo "Creating links for .vimrc and .ycm_extra_conf.py in ${HOME}"
-ln --symbolic "${g_dotvim_dir}/.vimrc" "${HOME}/.virmc"
-ln --symbolic "${g_dotvim_dir}/.ycm_extra_conf.py" "${HOME}/.ycm_extra_conf.py"
+install_plugins
 
 echo "Cleaning up ${g_tmp_dir}"
 rm -rf "${g_tmp_dir}"
