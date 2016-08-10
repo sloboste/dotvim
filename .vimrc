@@ -22,9 +22,9 @@ autocmd FileType c,cpp setlocal foldmethod=syntax
 set hidden
 nnoremap <silent> gt :bn<CR>
 nnoremap <silent> gT :bp<CR>
-"Disable buffer switching key sequences in NERDTree and Tagbar windows
-autocmd FileType nerdtree,tagbar nnoremap <buffer> gt <nop>
-autocmd FileType nerdtree,tagbar nnoremap <buffer> gT <nop>
+"Disable buffer switching key sequences in Tagbar window
+autocmd FileType tagbar nnoremap <buffer> gt <nop>
+autocmd FileType tagbar nnoremap <buffer> gT <nop>
 
 "Solarized color scheme
 set background=dark
@@ -66,13 +66,6 @@ let g:indentLine_color_term = 0
 "Tagbar
 nnoremap <F8> :TagbarToggle<CR>
 autocmd VimEnter * nested :call tagbar#autoopen(1)
-
-"TODO replace with ctrlp
-"NERDTree file explorer
-nnoremap <F7> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree  "NOTE: this is VERY SLOW when using sshfs
-autocmd VimEnter * wincmd p  "Focus on file not NERDTree on startup
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "GitGutter
 let g:gitgutter_realtime = 0
