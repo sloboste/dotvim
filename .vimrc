@@ -38,7 +38,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1  "FIXME why doesn't this work
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "Syntastic Python
@@ -67,6 +67,7 @@ let g:indentLine_color_term = 0
 nnoremap <F8> :TagbarToggle<CR>
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 
+"TODO replace with ctrlp
 "NERDTree file explorer
 nnoremap <F7> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree  "NOTE: this is VERY SLOW when using sshfs
