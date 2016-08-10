@@ -10,6 +10,13 @@ set tabstop=4
 syntax on
 filetype plugin indent on
 
+"Don't tab complete on these files
+set wildignore+=*.o,*.a,*.pyc
+set wildignore+=*.swp,*~,*.tmp
+set wildignore+=*.zip,*.tar.gz
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=.git,.svn,.hg
+
 "Use syntax folding for filetypes I use BUT not for python (break SimpylFold)
 autocmd FileType c,cpp setlocal foldmethod=syntax
 "NOTE: I tried to use the following autocmd but that broke Syntastic's
@@ -17,14 +24,8 @@ autocmd FileType c,cpp setlocal foldmethod=syntax
 "let fld_blacklist = ['gitcommit'] " , 'python']
 "autocmd BufNewFile,BufReadPost * if (index(fld_blacklist, &ft) < 0) | setlocal foldmethod=syntax
 
-"Remap gt -> :bn, gT -> :bp for quick next/prev buffer switching since tabs are
-"used less. Note: buffer numbers continously change.
+"Let modified buffers stay around in the background
 set hidden
-nnoremap <silent> gt :bn<CR>
-nnoremap <silent> gT :bp<CR>
-"Disable buffer switching key sequences in Tagbar window
-autocmd FileType tagbar nnoremap <buffer> gt <nop>
-autocmd FileType tagbar nnoremap <buffer> gT <nop>
 
 "Solarized color scheme
 set background=dark
@@ -58,6 +59,7 @@ let g:syntastic_tcl_checkers = ['nagelfar']
 "Airline
 set laststatus=2  "Always show status line
 let g:airline#extensions#tabline#enabled = 1
+let airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
 
 "IndentLine color

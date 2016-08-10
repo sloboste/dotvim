@@ -1,3 +1,3 @@
 * finish install script auto detection of profile name
 * better ultisnip snippets for python and c/c++
-* install ctrlP and fugitive
+* install fugitive
