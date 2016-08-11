@@ -16,7 +16,7 @@ g_dotvim_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 g_tmp_dir='/tmp/vim_env_install_work'
 g_nagelfar_release='123'
-g_profile_name='test-vim-solarized'
+g_profile_name='vim-solarized'
 g_profile_x=''
 
 ################################################################################
