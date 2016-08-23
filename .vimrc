@@ -65,10 +65,6 @@ let g:airline_powerline_fonts = 1
 "IndentLine color
 let g:indentLine_color_term = 0
 
-"Tagbar
-nnoremap <F8> :TagbarToggle<CR>
-autocmd VimEnter * nested :call tagbar#autoopen(1)
-
 "GitGutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
