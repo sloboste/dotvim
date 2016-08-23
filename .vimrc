@@ -87,3 +87,4 @@ let g:SimpylFold_docstring_preview = 1
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:ultisnips_python_style = "google"
