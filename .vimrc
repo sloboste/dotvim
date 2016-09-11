@@ -1,6 +1,7 @@
 execute pathogen#infect()
 
 "Normal vim options
+set mouse=a
 set splitright
 set relativenumber
 set number
