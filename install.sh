@@ -13,6 +13,12 @@ echo "Installing YouCompleteMe..."
 cd bundle/YouCompleteMe
 python install.py --clang-completer
 
-echo "Creating links for .vimrc and .ycm_extra_conf.py in ${HOME}"
-ln --symbolic "${g_dotvim_dir}/.vimrc" "${HOME}/.virmc"
-ln --symbolic "${g_dotvim_dir}/.ycm_extra_conf.py" "${HOME}/.ycm_extra_conf.py"
+g_vimrc=".vimrc"
+g_ycm_conf=".ycm_extra_conf.py"
+
+g_config_files=($g_vimrc $g_ycm_conf)
+for filename in "${g_config_files[@]}"
+do
+    echo "Installing $filename..."
+    ln -s "${g_dotvim_dir}/$filename" "${HOME}/$filename"
+done
