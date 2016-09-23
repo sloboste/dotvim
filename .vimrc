@@ -50,6 +50,7 @@ let g:syntastic_tcl_nagelfar_exec = 'nagelfar.tcl'
 let g:syntastic_tcl_checkers = ['nagelfar']
 
 "Airline
+set noshowmode
 set laststatus=2  "Always show status line
 let g:airline#extensions#tabline#enabled = 1
 let airline#extensions#tabline#show_buffers = 0
