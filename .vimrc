@@ -21,10 +21,6 @@ set wildignore+=.git,.svn,.hg
 
 "Use syntax folding for filetypes I use BUT not for python (break SimpylFold)
 autocmd FileType c,cpp setlocal foldmethod=syntax
-"NOTE: I tried to use the following autocmd but that broke Syntastic's
-"      check_on_open option
-"let fld_blacklist = ['gitcommit'] " , 'python']
-"autocmd BufNewFile,BufReadPost * if (index(fld_blacklist, &ft) < 0) | setlocal foldmethod=syntax
 
 "Let modified buffers stay around in the background
 set hidden
@@ -48,11 +44,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_pylint_exec = 'pylint'
 "let g:syntastic_python_pylint_args = ['--rc-file=.pylintrc']
 let g:syntastic_python_checkers = ['pylint']
-
-"NOTE: YCM does C family syntax checking, can't use Syntastic for it
-"let g:syntastic_cpp_compiler = 'g++'
-"let g:syntastic_cpp_compiler_options = '-Wall -Wextra -pedantic-errors'
-"let g:syntastic_cpp_compiler_options += '-std=c++11 -stdlib=c++'
 
 "Syntastic TCL
 let g:syntastic_tcl_nagelfar_exec = 'nagelfar.tcl'
