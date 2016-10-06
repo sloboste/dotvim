@@ -1,6 +1,7 @@
 execute pathogen#infect()
 
 "Normal vim options
+set splitright
 set relativenumber
 set number
 set colorcolumn=80
