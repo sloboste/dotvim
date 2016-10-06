@@ -52,10 +52,23 @@ let g:syntastic_tcl_checkers = ['nagelfar']
 "Airline
 set noshowmode
 set laststatus=2  "Always show status line
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = ['branch', 'tabline', 'ctrlp', 'syntastic', 'ycm',
+                           \'wordcount', 'whitespace']
+let g:airline_powerline_fonts = 1
+let g:airline_exclude_preview = 1
 let airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
-let g:airline_powerline_fonts = 1
+function GetVirtualEnv()
+    return '('.fnamemodify($VIRTUAL_ENV, ':t').')'
+endfunction
+call airline#parts#define_condition('virtualenv', '&filetype =~# "python"')
+call airline#parts#define_function('virtualenv', 'GetVirtualEnv')
+let g:airline_section_c = airline#section#create_left(['virtualenv'])
+let g:airline_section_z = airline#section#create_right(['C:%2c', '%3.5p%%'])
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'z', 'error', 'warning' ]
+    \ ]
 
 "IndentLine color
 let g:indentLine_color_term = 0
