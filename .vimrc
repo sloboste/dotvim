@@ -19,6 +19,9 @@ set wildignore+=*.zip,*.tar.gz
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=.git,.svn,.hg
 
+"Tell ctags to look for tags file in directories above if not found in current
+set tags=tags;/
+
 "Use syntax folding for filetypes I use BUT not for python (break SimpylFold)
 autocmd FileType c,cpp setlocal foldmethod=syntax
 
