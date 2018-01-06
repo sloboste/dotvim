@@ -1,1 +1,0 @@
-* better ultisnip snippets for python and c/c++
