@@ -1,4 +1,40 @@
-execute pathogen#infect()
+" Automatically install Vim Plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.config/nvim/bundle')
+Plug 'tmhedberg/SimpylFold'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'stfl/meson.vim'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
+" Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'wagnerf42/vim-clippy'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-repeat'
+" Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'cespare/vim-toml'
+Plug 'maralla/vim-toml-enhance'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': [
+        \ 'bash install.sh',
+        \ 'UpdateRemotePlugins'],
+    \ }
+Plug 'junegunn/fzf'
+Plug 'roxma/nvim-completion-manager'
+call plug#end()
 
 " Normal vim options
 set mouse=a
@@ -40,7 +76,13 @@ set termguicolors
 set background=dark
 colorscheme solarized
 
-" No Syntastic C/C++ conflicts with YCM
+" Neovim Completion Manager
+set shortmess+=c
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" NO Syntastic on these filetypes
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["c", "cc", "cpp", "h", "hpp"]}
@@ -100,30 +142,37 @@ let g:airline#extensions#default#layout = [
 
 " IndentLine color
 let g:indentLine_color_term = 0
+let g:indentLine_setConceal = 0
 
-" GitGutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-" The above settings don't seem to work when they are set to 1 so use autocmd
-autocmd BufWritePost * :GitGutter
-
-" YouCompleteMe autocompletion, C/C++ syntax checking
-let g:ycm_add_preview_to_context = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python3'
+" Language Server syntax checking
+let s:cquery_bin_path = join(
+    \ [fnamemodify(expand('<sfile>:p'), ':p:h'),
+    \  'cquery', 'build', 'release', 'bin', 'cquery'],
+    \ '/')
+let g:LanguageClient_serverCommands = {
+\ 'cpp': [s:cquery_bin_path,
+        \ '--language-server',
+        \ '--log-file=/tmp/cq.log'],
+\ }
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_autoStart = 1
+let s:cquery_settings_path = join(
+    \ [fnamemodify(expand('<sfile>:p'), ':p:h'),
+    \  "settings.json"],
+    \ '/')
+let g:LanguageClient_settingsPath = s:cquery_settings_path
 
 " SimpylFold better Python code folding
 let g:SimpylFold_fold_import = 0
 let g:SimpylFold_fold_docstring = 0
 let g:SimpylFold_docstring_preview = 1
 
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:ultisnips_python_style = "google"
+" FIXME
+" " ultisnips
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:ultisnips_python_style = "google"
 
 " Rust
 let g:rust_recommended_style = 1
