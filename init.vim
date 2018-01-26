@@ -9,7 +9,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'tmhedberg/SimpylFold'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'stfl/meson.vim'
+Plug 'mesonbuild/meson', { 'rtp': 'data/syntax-highlighting/vim' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
