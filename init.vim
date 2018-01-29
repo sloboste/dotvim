@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'cespare/vim-toml'
 Plug 'maralla/vim-toml-enhance'
+Plug 'tpope/vim-obsession'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -134,7 +135,9 @@ function GetVirtualEnv()
 endfunction
 call airline#parts#define_condition('virtualenv', '&filetype =~# "python"')
 call airline#parts#define_function('virtualenv', 'GetVirtualEnv')
-let g:airline_section_c = airline#section#create_left(['virtualenv'])
+let g:airline_section_c = airline#section#create_left([
+    \ '%{ObsessionStatus(''Session active'', ''No session'')}',
+    \ 'virtualenv'])
 let g:airline_section_z = airline#section#create_right(['C:%2c', '%3.5p%%'])
 let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'c' ],
