@@ -9,6 +9,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'tmhedberg/SimpylFold'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'elzr/vim-json'
 Plug 'mesonbuild/meson', { 'rtp': 'data/syntax-highlighting/vim' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rust-lang/rust.vim'
@@ -142,7 +143,7 @@ let g:airline#extensions#default#layout = [
 
 " IndentLine color
 let g:indentLine_color_term = 0
-let g:indentLine_setConceal = 0
+let g:vim_json_syntax_conceal = 0
 
 " Language Server syntax checking
 let s:cquery_bin_path = join(
