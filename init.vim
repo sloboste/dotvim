@@ -14,15 +14,15 @@ Plug 'mesonbuild/meson', { 'rtp': 'data/syntax-highlighting/vim' }
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
-" Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'  FIXME remove
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'wagnerf42/vim-clippy'
+" Plug 'wagnerf42/vim-clippy'  FIXME remove
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-repeat'
-" Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'  # FIXME remove
 Plug 'tpope/vim-surround'
 Plug 'cespare/vim-toml'
 Plug 'maralla/vim-toml-enhance'
@@ -36,6 +36,9 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'junegunn/fzf'
 Plug 'roxma/nvim-completion-manager'
+Plug 'racer-rust/vim-racer'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'sloboste/vim-groovy-syntax'
 call plug#end()
 
 " Normal vim options
@@ -52,6 +55,7 @@ set textwidth=79
 set fo+=t  " Autowrap at 80+ chars
 syntax on
 filetype plugin indent on
+set updatetime=100
 
 set wildmode=longest,list
 
@@ -65,6 +69,7 @@ set wildignore+=.git,.svn,.hg
 " Tell ctags to look for tags file in directories above if not found in current
 set tags=tags;/
 
+" TODO remove if language server stuff ever works like tags
 " Rusty tags
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" <bar> redraw!
@@ -114,8 +119,9 @@ let s:mdl_style_path = join(
     \ '/')
 let g:syntastic_markdown_mdl_args = ["--style", s:mdl_style_path]
 
+" FIXME remove
 " Syntastic Rust
-let g:syntastic_rust_checkers = ['clippy']
+" let g:syntastic_rust_checkers = ['clippy']
 
 " Syntastic shell
 let g:syntastic_sh_checkers = ['shellcheck']
@@ -154,9 +160,9 @@ let s:cquery_bin_path = join(
     \  'cquery', 'build', 'release', 'bin', 'cquery'],
     \ '/')
 let g:LanguageClient_serverCommands = {
-\ 'cpp': [s:cquery_bin_path,
-        \ '--language-server',
-        \ '--log-file=/tmp/cq.log'],
+    \ 'cpp': [s:cquery_bin_path, '--language-server', '--log-file=/tmp/cq.log'],
+    \ 'c': [s:cquery_bin_path, '--language-server', '--log-file=/tmp/cq.log'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_autoStart = 1
@@ -165,6 +171,8 @@ let s:cquery_settings_path = join(
     \  "settings.json"],
     \ '/')
 let g:LanguageClient_settingsPath = s:cquery_settings_path
+
+" nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
 
 " SimpylFold better Python code folding
 let g:SimpylFold_fold_import = 0
@@ -178,6 +186,9 @@ let g:SimpylFold_docstring_preview = 1
 " let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 " let g:ultisnips_python_style = "google"
 
+" FIXME
 " Rust
 let g:rust_recommended_style = 1
-let g:rustfmt_autosave = 1
+" let g:rustfmt_autosave = 1
+let g:racer_cmd = "/home/ssloboda/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
