@@ -154,6 +154,7 @@ let g:airline#extensions#default#layout = [
 
 " IndentLine color
 let g:indentLine_color_term = 0
+let g:indentLine_fileTypeExclude = ['markdown']
 let g:vim_json_syntax_conceal = 0
 
 " Language Server syntax checking
