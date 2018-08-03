@@ -39,6 +39,8 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'racer-rust/vim-racer'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'sloboste/vim-groovy-syntax'
+Plug 'chrisbra/vim-kconfig'
+Plug 'thomafred/kermitSyntax', { 'rtp': 'vim' }
 call plug#end()
 
 " Normal vim options
