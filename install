@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 
+set -e
+
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
 g_dotvim_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 pushd "${g_dotvim_dir}"
 git submodule update --init --recursive
 pushd cquery
-./waf configure
-./waf build
+
+rm -rf build
+mkdir build
+pushd build
+cmake .. \
+    -DCMAKE_BUILD_TYPE=release \
+    -DCMAKE_INSTALL_PREFIX=release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=YES \
+    -DSYSTEM_CLANG=ON
+make install -j8
+
+popd
 popd
 popd
