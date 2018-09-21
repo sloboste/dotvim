@@ -168,7 +168,10 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 \ }
 let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_autoStart = 1
+
+" Don't start the language client if we see a special file.
+let g:LanguageClient_autoStart = empty(glob(".disable_neovim_language_client"))
+
 let s:cquery_settings_path = join(
     \ [fnamemodify(expand('<sfile>:p'), ':p:h'),
     \  "settings.json"],
