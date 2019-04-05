@@ -61,6 +61,9 @@ set updatetime=100
 
 set wildmode=longest,list
 
+" No ex mode
+nnoremap Q <Nop>
+
 " Don't tab complete on these files
 set wildignore+=*.o,*.a,*.pyc,*.su
 set wildignore+=*.swp,*~,*.tmp
