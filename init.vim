@@ -131,6 +131,8 @@ let g:syntastic_markdown_mdl_args = ["--style", s:mdl_style_path]
 " Syntastic shell
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_bash_checkers = ['shellcheck']
+let g:syntastic_sh_shellcheck_args = '-x'
+let g:syntastic_bash_shellcheck_args = '-x'
 
 " Airline
 set noshowmode
