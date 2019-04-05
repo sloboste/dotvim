@@ -35,7 +35,7 @@ Plug 'autozimu/LanguageClient-neovim', {
         \ 'UpdateRemotePlugins'],
     \ }
 Plug 'junegunn/fzf'
-Plug 'roxma/nvim-completion-manager'
+Plug 'ncm2/ncm2'
 Plug 'racer-rust/vim-racer'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'sloboste/vim-groovy-syntax'
