@@ -30,13 +30,14 @@ Plug 'tpope/vim-obsession'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': [
-        \ 'bash install.sh',
-        \ 'UpdateRemotePlugins'],
+    \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
 Plug 'ncm2/ncm2'
-Plug 'racer-rust/vim-racer'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/racer'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'sloboste/vim-groovy-syntax'
 Plug 'chrisbra/vim-kconfig'
@@ -88,7 +89,8 @@ set termguicolors
 set background=dark
 colorscheme solarized
 
-" Neovim Completion Manager
+" NCM2 (formerly neovim completion manager)
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 set shortmess+=c
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -97,7 +99,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " NO Syntastic on these filetypes
 let g:syntastic_mode_map = {
     \ "mode": "active",
-    \ "passive_filetypes": ["c", "cc", "cpp", "h", "hpp"]}
+    \ "passive_filetypes": ["c", "cc", "cpp", "h", "hpp", "rs", "rust"]}
 
 " Syntastic status line
 set statusline+=%#warningmsg#
@@ -167,12 +169,20 @@ let s:cquery_bin_path = join(
     \ [fnamemodify(expand('<sfile>:p'), ':p:h'),
     \  'cquery', 'build', 'release', 'bin', 'cquery'],
     \ '/')
+" FIXME
+" let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
+" let g:LanguageClient_serverCommands = {
+"     \ 'cpp': ['clangd'],
+"     \ 'c': ['clangd'],
+\ }
 let g:LanguageClient_serverCommands = {
-    \ 'cpp': [s:cquery_bin_path, '--language-server', '--log-file=/tmp/cq.log'],
-    \ 'c': [s:cquery_bin_path, '--language-server', '--log-file=/tmp/cq.log'],
+    \ 'cpp': [s:cquery_bin_path, '--log-file=/tmp/cq.log'],
+    \ 'c': [s:cquery_bin_path, '--log-file=/tmp/cq.log'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 \ }
 let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_hoverPreview = 'Always'
 
 " Don't start the language client if we see a special file.
 let g:LanguageClient_autoStart = empty(glob(".disable_neovim_language_client"))
