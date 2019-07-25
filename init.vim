@@ -42,6 +42,7 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'sloboste/vim-groovy-syntax'
 Plug 'chrisbra/vim-kconfig'
 Plug 'thomafred/kermitSyntax', { 'rtp': 'vim' }
+Plug 'fidian/hexmode'
 call plug#end()
 
 " Normal vim options
